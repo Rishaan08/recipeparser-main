@@ -1,6 +1,7 @@
-venv/
+.venv/
 *.pyc
 .env
 node_modules/
 build/
 .DS_Store
+recipes_backup_before_reload.json

@@ -25,6 +25,7 @@ const RecipeTable = () => {
   const [totalRecipes, setTotalRecipes] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearching, setIsSearching] = useState(false);
+  const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
   useEffect(() => {
     fetchRecipes();
@@ -34,8 +35,8 @@ const RecipeTable = () => {
     try {
       setLoading(true);
       const baseUrl = isSearching && searchTerm
-        ? `http://localhost:8000/api/recipes/search`
-        : `http://localhost:8000/api/recipes`;
+        ? `${API_BASE}/api/recipes/search`
+        : `${API_BASE}/api/recipes`;
 
       const params = isSearching && searchTerm
         ? { page: page + 1, limit: rowsPerPage, title: searchTerm }
