@@ -8,16 +8,6 @@ This project consists of a FastAPI backend and a React frontend for displaying r
 - FastAPI's versatile framework helps with easy integration of APIs.
 - Simple React frontend to display the database table.
 
-
-## Challenges Faced
-
-| Challenge | Solution |
-|-----------|----------|
-| **Adding the correct schema into the postgres database**: Creating the right table structure to store recipe data. | Designed a schema with data types: `SERIAL` for ID, `VARCHAR(255)` for text fields, `FLOAT` for ratings, `INTEGER` for time fields, and `JSONB` for complex nutrient data. Used constraints and indexes. |
-| **Requiring to typecast nutrients**: The nutrients data was coming in different formats (string, object, null) making it difficult to store consistently. | Type checking and conversion system that handles different nutrient formats, converts strings to JSON objects, and ensures consistent JSONB storage. |
-| **Handling offset**: Managing pagination correctly in the API while maintaining data retrieval and performance. | Implemented proper offset calculation in the API: `offset = (page - 1) * limit`, ensuring data slicing and database queries with `LIMIT` and `OFFSET` clauses. |
-| **Handling N/A results in frontend**: Dealing with null or undefined values in the frontend display, especially for ratings and servings. | Null-checking in the React component using conditional rendering and the   coalescing operator (`??`), ensuring display of 'N/A' for missing values while formatting numbers. |
-
 ## Prerequisites
 
 - Python 3.8 or higher
@@ -94,18 +84,3 @@ The backend provides the following API endpoints:
      - `rating_max`: Maximum rating
      - `total_time_min`: Minimum total time
      - `total_time_max`: Maximum total time
-
-## Screenshots
-
-1. Backend API running
-![Backend API running](Screenshots/BackendStatus.png)
-![Limit 1 & Page 1](Screenshots/Count.png)
-![Rating 4](Screenshots/Rating4.png)
-![Title like 'red'](Screenshots/LikeRed.png)
-
-2. Frontend application
-![Frontend application](Screenshots/Frontend.png)
-3. Recipe table with data
-![Recipe table with data](Screenshots/View_DB.png)
-![Count in DB](Screenshots/Count_DB.png)
-
